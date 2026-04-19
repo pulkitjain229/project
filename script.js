@@ -12,12 +12,38 @@ window.addEventListener('load', () => {
     initSoundPrompt();
     initLoader();
     initCursor();
+    initMobileMenu(); // New
     initProgressiveReveal();
     initSectionTransitions();
     initInteractions();
     initParallax();
     initParticles();
 });
+
+// ==========================================================================
+// MOBILE MENU ENGINE
+// ==========================================================================
+function initMobileMenu() {
+    const btn = document.getElementById('mobileMenuBtn');
+    const menu = document.getElementById('mobileMenu');
+    const links = document.querySelectorAll('.mobile-nav-item');
+
+    const toggleMenu = () => {
+        btn.classList.toggle('active');
+        menu.classList.toggle('active');
+        document.body.classList.toggle('is-locked');
+    };
+
+    btn.addEventListener('click', toggleMenu);
+
+    links.forEach(link => {
+        link.addEventListener('click', () => {
+            toggleMenu();
+            const target = link.getAttribute('href');
+            gsap.to(window, { duration: 1.5, scrollTo: target, ease: 'power4.inOut' });
+        });
+    });
+}
 
 // ==========================================================================
 // SOUND & ENTRY ENGINE
