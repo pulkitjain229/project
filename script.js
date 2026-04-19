@@ -213,6 +213,14 @@ function initLoader() {
 function initCursor() {
     const glow = document.getElementById('cursorGlow');
     const follower = document.getElementById('cursorFollower');
+    
+    // Disable on touch devices
+    if (window.matchMedia("(pointer: coarse)").matches) {
+        if (glow) glow.style.display = 'none';
+        if (follower) follower.style.display = 'none';
+        return;
+    }
+
     let mouseX = 0, mouseY = 0;
 
     window.addEventListener('mousemove', (e) => {

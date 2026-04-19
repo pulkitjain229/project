@@ -148,15 +148,15 @@ body.is-locked {
     color: #fff;
     text-transform: uppercase;
     margin-bottom: 20px;
-    line-height: 1.1;
+    line-height: 1.2;
 }
 
 .intro-poetic {
     font-family: 'Noto Serif JP', serif;
-    font-size: clamp(0.9rem, 3vw, 1.2rem);
+    font-size: clamp(0.9rem, 3vw, 1.1rem);
     font-style: italic;
     color: var(--text-dim);
-    line-height: 1.8;
+    line-height: 1.6;
     max-width: 500px;
     margin: 0 auto 40px;
 }
@@ -286,11 +286,19 @@ body.is-locked {
     align-items: center;
 }
 
+.image-showcase img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+    background: #080810;
+}
+
 /* Hero Typography */
 .hero-title {
     font-family: 'Playfair Display', serif;
-    font-size: clamp(2.5rem, 12vw, 8rem);
-    line-height: 0.95;
+    font-size: clamp(2.2rem, 10vw, 8rem);
+    line-height: 1.1;
     font-weight: 700;
     letter-spacing: -0.02em;
     text-transform: uppercase;
@@ -369,7 +377,15 @@ body.is-locked {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: rgba(5, 5, 8, 0.2);
+    background: rgba(5, 5, 8, 0.4);
+    backdrop-filter: blur(10px);
+    transition: all 0.8s var(--ease-cinematic);
+}
+
+.unlocked .lock-overlay {
+    opacity: 0;
+    pointer-events: none;
+    visibility: hidden;
 }
 
 .lock-content { text-align: center; padding: 20px; }
@@ -393,24 +409,29 @@ body.is-locked {
 }
 
 @media (max-width: 768px) {
-    :root { --safe-padding: 25px; }
+    :root { --safe-padding: 20px; }
     
     .hamburger { display: flex; }
     .nav-links.desktop-only { display: none; }
     
     .navbar { padding: 15px var(--safe-padding); }
     
+    .panel {
+        padding: 80px var(--safe-padding);
+    }
+
     .grid-layout {
         grid-template-columns: 1fr;
-        gap: 50px;
+        gap: 40px;
         text-align: center;
     }
     
-    .hero-subtitle { margin: 0 auto; }
+    .hero-title { font-size: clamp(2rem, 12vw, 4rem); line-height: 1.2; }
+    .hero-subtitle { margin: 0 auto; font-size: 0.85rem; }
     
     .memory-card-wrap {
         max-width: 100%;
-        height: 450px;
+        height: 400px;
     }
 
     .btn-heartbeat {
@@ -423,13 +444,19 @@ body.is-locked {
         flex-direction: column;
         gap: 15px;
     }
+
+    .single-line-text {
+        font-size: 1.2rem !important;
+        line-height: 1.5;
+    }
 }
 
 /* Extreme Small Screens */
 @media (max-width: 380px) {
     .intro-title { font-size: 1.8rem; }
-    .hero-title { font-size: 2.5rem; }
-    .memory-card-wrap { height: 380px; }
+    .hero-title { font-size: 2.2rem; }
+    .memory-card-wrap { height: 350px; }
+    .btn-luxury-enter { padding: 15px 25px; font-size: 0.65rem; }
 }
 
 /* ==========================================================================
