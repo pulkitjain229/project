@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Deep Interactive Design System - MOBILE OPTIMIZED
+   Deep Interactive Design System - RESTORED ORIGINAL
    ========================================================================== */
 @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200;400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Inter:wght@100;300;400&family=Outfit:wght@100;300;400&display=swap');
 
@@ -193,6 +193,21 @@ body.is-locked {
     transition: all 0.5s var(--ease-cinematic);
 }
 
+.navbar.scrolled {
+    background: rgba(5, 5, 8, 0.7);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    padding: 15px var(--safe-padding);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.nav-logo {
+    font-size: 1.8rem;
+    font-weight: 700;
+    font-family: 'Playfair Display', serif;
+    letter-spacing: 0.1em;
+}
+
 .nav-links.desktop-only {
     display: flex;
     gap: 30px;
@@ -202,9 +217,9 @@ body.is-locked {
 .nav-item {
     text-decoration: none;
     color: #fff;
-    font-size: 0.6rem;
-    letter-spacing: 0.2em;
-    opacity: 0.5;
+    font-size: 0.9rem;
+    letter-spacing: 0.15em;
+    opacity: 0.7;
     transition: 0.4s;
 }
 
@@ -289,9 +304,9 @@ body.is-locked {
 .image-showcase img {
     width: 100%;
     height: 100%;
-    object-fit: contain;
-    object-position: center;
-    background: #080810;
+    object-fit: cover;
+    object-position: center 20%;
+    border-radius: 8px;
 }
 
 /* Hero Typography */
@@ -328,8 +343,9 @@ body.is-locked {
 
 .memory-card-wrap {
     width: 100%;
-    max-width: 320px;
-    height: 420px;
+    max-width: 400px;
+    aspect-ratio: 3 / 4;
+    height: auto;
 }
 
 .memory-card {
@@ -390,22 +406,440 @@ body.is-locked {
 
 .lock-content { text-align: center; padding: 20px; }
 
+.lock-content.premium-lock {
+    max-width: 400px;
+    padding: 40px;
+    background: rgba(10, 10, 15, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+}
+
+.premium-question {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.5rem, 5vw, 2.2rem);
+    color: #fff;
+    margin: 20px 0 10px;
+    line-height: 1.3;
+}
+
+.premium-subtitle {
+    font-size: clamp(0.75rem, 2vw, 0.9rem);
+    color: var(--text-dim);
+    letter-spacing: 0.1em;
+    margin-bottom: 30px;
+}
+
+.lock-icon-wrapper {
+    font-size: 2rem;
+    color: var(--accent-sakura);
+    animation: pulseIcon 2s infinite;
+}
+
+@keyframes pulseIcon {
+    0%, 100% { opacity: 0.5; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.1); }
+}
+
 .btn-unlock {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: transparent;
+    border: 1px solid var(--accent-sakura);
     color: #fff;
     padding: 15px 35px;
     border-radius: 50px;
     cursor: pointer;
     font-size: 0.7rem;
-    letter-spacing: 0.2em;
+    letter-spacing: 0.3em;
+    transition: all 0.4s ease;
+}
+
+.btn-unlock:hover {
+    background: var(--accent-sakura);
+    color: #000;
 }
 
 /* ==========================================================================
-   Mobile Responsive Overrides
+   Utilities
+   ========================================================================== */
+.cursor-glow, .cursor-follower {
+    position: fixed;
+    pointer-events: none;
+    z-index: 1000000;
+    border-radius: 50%;
+}
+
+.cursor-follower {
+    width: 10px;
+    height: 10px;
+    background: #fff;
+    top: -5px;
+    left: -5px;
+    mix-blend-mode: exclusion;
+}
+
+.cursor-glow {
+    width: 100px;
+    height: 100px;
+    background: radial-gradient(circle, rgba(232, 160, 176, 0.2) 0%, rgba(232, 160, 176, 0) 70%);
+    top: -50px;
+    left: -50px;
+}
+
+.text-center { text-align: center; }
+.hidden { display: none; }
+
+/* ==========================================================================
+   Cinematic Scroll Sections
+   ========================================================================== */
+.cinematic-scroll-section {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: var(--safe-padding);
+}
+
+.cinematic-text {
+    font-family: 'Noto Serif JP', serif;
+    font-size: clamp(1.2rem, 4vw, 2rem);
+    line-height: 1.8;
+    color: var(--text-white);
+    max-width: 800px;
+    margin: 0 auto;
+    font-style: italic;
+    font-weight: 300;
+}
+
+/* Fade Up Animation */
+.cinematic-fade-up {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 1.2s cubic-bezier(0.25, 1, 0.5, 1), transform 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.cinematic-fade-up.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Typing Effect */
+.typing-effect-trigger {
+    font-family: 'Outfit', sans-serif;
+    font-size: clamp(0.9rem, 3vw, 1.2rem);
+    font-style: normal;
+    letter-spacing: 0.1em;
+    color: var(--accent-sakura);
+}
+
+.typing-effect-trigger.is-typing::after {
+    content: '|';
+    animation: blinkCursor 0.8s infinite;
+}
+
+@keyframes blinkCursor {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+/* ==========================================================================
+   Story Glass Panel & Text Animations
+   ========================================================================== */
+.story-glass-panel {
+    background: linear-gradient(180deg, rgba(10, 10, 15, 0.4) 0%, rgba(30, 20, 25, 0.6) 100%);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    padding: 35px 25px;
+    margin: 30px 0;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.story-para {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.05rem;
+    line-height: 2.2;
+    letter-spacing: 0.04em;
+    margin-bottom: 35px;
+    color: rgba(255, 255, 255, 0.85);
+    font-weight: 300;
+}
+
+.story-para:last-child {
+    margin-bottom: 0;
+}
+
+.story-highlight {
+    font-size: 1.25rem;
+    font-family: 'Noto Serif JP', serif;
+    font-style: italic;
+    color: var(--accent-sakura);
+    text-shadow: 0 0 20px rgba(232, 160, 176, 0.3);
+    font-weight: 400;
+}
+
+.story-reveal-line {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+/* ==========================================================================
+   Journey Timeline
+   ========================================================================== */
+.journey-timeline {
+    position: relative;
+    max-width: 600px;
+    margin: 0 auto 60px auto;
+    padding: 20px 0;
+}
+
+.timeline-line {
+    position: absolute;
+    left: 20px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.1) 10%, rgba(255, 255, 255, 0.3) 50%, transparent);
+}
+
+.timeline-node {
+    position: relative;
+    padding-left: 60px;
+    margin-bottom: 40px;
+    opacity: 0.6;
+    transition: all 0.4s ease;
+    cursor: pointer;
+}
+
+.timeline-node:hover {
+    opacity: 1;
+    transform: translateX(10px);
+}
+
+.node-dot {
+    position: absolute;
+    left: 15px;
+    top: 8px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--accent-sakura);
+    box-shadow: 0 0 10px var(--accent-sakura);
+}
+
+.node-content h4 {
+    margin: 0 0 5px 0;
+    color: #fff;
+    font-size: 1.1rem;
+    letter-spacing: 0.1em;
+}
+
+.node-content p {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.9rem;
+    font-style: italic;
+}
+
+/* ==========================================================================
+   Interactive Word Highlights
+   ========================================================================== */
+.glow-word {
+    position: relative;
+    color: #fff;
+    cursor: default;
+    transition: color 0.3s ease;
+}
+
+.glow-word::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 100%;
+    height: 1px;
+    background: var(--accent-sakura);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.4s ease;
+}
+
+.glow-word:hover {
+    color: var(--accent-sakura);
+    text-shadow: 0 0 10px rgba(232, 160, 176, 0.5);
+}
+
+.glow-word:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+/* ==========================================================================
+   Floating Quotes (Background Layer)
+   ========================================================================== */
+.floating-quotes-layer {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.floating-quote {
+    position: absolute;
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: clamp(3rem, 8vw, 6rem);
+    color: rgba(255, 255, 255, 0.03);
+    white-space: nowrap;
+}
+
+/* ==========================================================================
+   Minimalist Climax Redesign
+   ========================================================================== */
+.minimal-climax {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 50vh;
+}
+
+.minimal-proposal-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    letter-spacing: 0.05em;
+    color: #fff;
+    font-weight: 400;
+    margin: 0 0 15px 0;
+}
+
+.minimal-proposal-subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    letter-spacing: 0.1em;
+    color: rgba(255, 255, 255, 0.5);
+    margin: 0 0 50px 0;
+    font-weight: 300;
+}
+
+.minimal-actions {
+    display: flex;
+    gap: 20px;
+}
+
+.btn-minimal-primary, .btn-minimal-secondary {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #fff;
+    padding: 12px 30px;
+    border-radius: 40px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.4s ease;
+}
+
+.btn-minimal-primary:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+.btn-minimal-secondary {
+    border-color: transparent;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.btn-minimal-secondary:hover {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.hidden-corner-detail {
+    position: absolute;
+    bottom: 30px;
+    right: 40px;
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.3);
+    margin: 0;
+}
+
+.minimal-fade-target {
+    opacity: 0;
+}
+
+/* ==========================================================================
+   Premium Image Formatting
+   ========================================================================== */
+.premium-memory-image {
+    width: 100%;
+    max-width: 650px;
+    height: auto;
+    max-height: 500px;
+    object-fit: contain;
+    border-radius: 12px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    display: block;
+    margin: 0 auto;
+    transition: transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.premium-memory-image:hover {
+    transform: scale(1.05);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
+}
+
+.split-image-side {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+#feel-image {
+    margin-top: -60px;
+}
+
+/* ==========================================================================
+   Split Layouts
+   ========================================================================== */
+.split-layout {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 60px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.split-layout.reverse-split {
+    flex-direction: row-reverse;
+}
+
+.split-image-side {
+    flex: 1;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+}
+
+.split-text-side {
+    flex: 1;
+    padding: 20px;
+}
+
+/* ==========================================================================
+   MINIMAL MOBILE RESPONSIVENESS (ONLY FOR BROKEN ELEMENTS)
    ========================================================================== */
 @media (max-width: 1024px) {
     .grid-layout { gap: 40px; }
+    .split-layout { gap: 30px; }
 }
 
 @media (max-width: 768px) {
@@ -425,33 +859,76 @@ body.is-locked {
         gap: 40px;
         text-align: center;
     }
+
+    .split-layout, .split-layout.reverse-split {
+        flex-direction: column;
+        gap: 30px;
+        text-align: center;
+    }
+
+    .split-image-side, .split-text-side {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .premium-memory-image {
+        max-height: 350px;
+    }
     
     .hero-title { font-size: clamp(2rem, 12vw, 4rem); line-height: 1.2; }
     .hero-subtitle { margin: 0 auto; font-size: 0.85rem; }
     
     .memory-card-wrap {
         max-width: 100%;
-        height: 400px;
+        aspect-ratio: 4 / 5;
+        height: auto;
     }
 
-    .btn-heartbeat {
-        width: 100%;
-        padding: 20px;
+    .journey-timeline {
+        padding: 10px 0;
     }
 
-    .climax-actions {
-        display: flex;
+    .timeline-node {
+        padding-left: 45px;
+    }
+
+    .timeline-line {
+        left: 15px;
+    }
+
+    .node-dot {
+        left: 10px;
+    }
+
+    .story-glass-panel {
+        padding: 25px 20px;
+    }
+
+    #feel-image {
+        margin-top: 0;
+    }
+
+    .minimal-actions {
         flex-direction: column;
+        width: 100%;
         gap: 15px;
     }
 
-    .single-line-text {
-        font-size: 1.2rem !important;
-        line-height: 1.5;
+    .btn-minimal-primary, .btn-minimal-secondary {
+        width: 100%;
+    }
+
+    .hidden-corner-detail {
+        position: relative;
+        bottom: 0;
+        right: 0;
+        margin-top: 40px;
+        text-align: center;
+        width: 100%;
     }
 }
 
-/* Extreme Small Screens */
+/* Extreme Small Screens Fixes */
 @media (max-width: 380px) {
     .intro-title { font-size: 1.8rem; }
     .hero-title { font-size: 2.2rem; }
@@ -459,20 +936,8 @@ body.is-locked {
     .btn-luxury-enter { padding: 15px 25px; font-size: 0.65rem; }
 }
 
-/* ==========================================================================
-   Utilities
-   ========================================================================== */
-.cursor-glow, .cursor-follower {
-    position: fixed;
-    pointer-events: none;
-    z-index: 1000000;
-}
-
-/* Hide cursor on mobile */
+/* Performance and Touch Adjustments */
 @media (pointer: coarse) {
     .cursor-glow, .cursor-follower { display: none; }
     * { cursor: auto !important; }
 }
-
-.text-center { text-align: center; }
-.hidden { display: none; }

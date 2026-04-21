@@ -1,17 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>THE JOURNEY — 우리의 이야기</title>
-    
+
     <!-- Premium Typography -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200;400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Inter:wght@100;300;400;600&family=Outfit:wght@100;300;400&display=swap" rel="stylesheet">
-    
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200;400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Inter:wght@100;300;400;600&family=Outfit:wght@100;300;400&display=swap"
+        rel="stylesheet">
+
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body class="is-locked">
 
     <!-- Custom Cursor -->
@@ -25,15 +29,16 @@
             <div class="intro-layer layer-overlay"></div>
             <div class="intro-layer layer-fog"></div>
         </div>
-        
+
         <div class="prompt-content">
             <div class="intro-reveal">
                 <span class="intro-tag reveal-item">A FRAGILE MEMORY</span>
                 <h1 class="intro-title reveal-item">THE JOURNEY OF US</h1>
                 <div class="intro-divider reveal-item"></div>
-                <p class="intro-poetic reveal-item">Some stories are carved in the heart, waiting for the right moment to be retold.</p>
+                <p class="intro-poetic reveal-item">Some stories are carved in the heart, waiting for the right moment
+                    to be retold.</p>
                 <p class="intro-audio-note reveal-item">Please turn on your sound for the full experience.</p>
-                
+
                 <div class="intro-action reveal-item">
                     <button class="btn-luxury-enter" id="btnStartSound">
                         <span class="btn-text">ENTER THE MEMORY</span>
@@ -94,9 +99,16 @@
         </div>
 
         <div class="particles-overlay" id="particlesContainer"></div>
-        
+
+        <!-- Floating Quotes Background Layer -->
+        <div class="floating-quotes-layer">
+            <div class="floating-quote" style="top: 20%; left: 10%;">some memories stay</div>
+            <div class="floating-quote" style="top: 50%; right: 10%;">we were real</div>
+            <div class="floating-quote" style="top: 80%; left: 20%;">unspoken words</div>
+        </div>
+
         <main class="scroll-container">
-            
+
             <!-- SECTION 1: LANDING -->
             <section id="landing" class="panel section-hero">
                 <div class="content-wrapper text-center">
@@ -109,19 +121,46 @@
                 </div>
             </section>
 
-            <!-- PAUSE MOMENT 1 -->
-            <section class="panel pause-moment">
+            <!-- CINEMATIC SCROLL 1 -->
+            <section class="panel cinematic-scroll-section">
                 <div class="content-wrapper text-center">
-                    <p class="single-line-text reveal-fade">SOME THINGS... I UNDERSTOOD TOO LATE.</p>
+                    <p class="cinematic-text cinematic-fade-up">"Not every story gets the ending we once
+                        imagined…<br>but that doesn’t mean it was never real, never meaningful, or never worth
+                        everything we felt."</p>
+                </div>
+            </section>
+
+            <!-- PAUSE MOMENT 1 -->
+            <section class="panel cinematic-scroll-section">
+                <div class="content-wrapper text-center">
+                    <p class="cinematic-text cinematic-fade-up">“Some stories don’t really end, they just stay
+                        unfinished
+                        somewhere between what we felt and what we never said, quietly waiting for the moment when
+                        two people finally find the courage to come back and complete what was once so real.”
+                    </p>
+                </div>
+            </section>
+
+            <!-- CINEMATIC SCROLL 2 -->
+            <section class="panel cinematic-scroll-section">
+                <div class="content-wrapper text-center">
+                    <p class="cinematic-text cinematic-fade-up">"Some connections don’t fade away with time…<br>they
+                        just stay hidden somewhere deep, waiting for one moment of courage to come alive again."</p>
                 </div>
             </section>
 
             <!-- SECTION 2: OUR STORY (LOCKED) -->
             <section id="our-story" class="panel is-blur-locked">
                 <div class="lock-overlay" id="lockStory">
-                    <div class="lock-content">
-                        <p>DO YOU WANT TO SEE WHAT WE LOST?</p>
-                        <button class="btn-unlock" onclick="unlockSection('our-story')">UNLOCK THIS MEMORY</button>
+                    <div class="lock-content premium-lock">
+                        <div class="lock-icon-wrapper">
+                            <span class="lock-icon">✧</span>
+                        </div>
+                        <h3 class="premium-question">Do you want to relive how it all started?</h3>
+                        <p class="premium-subtitle">A journey of beautiful memories awaits.</p>
+                        <button class="btn-unlock" onclick="unlockSection('our-story')">
+                            <span class="btn-text">UNLOCK THIS MEMORY</span>
+                        </button>
                     </div>
                 </div>
                 <div class="content-wrapper">
@@ -129,18 +168,98 @@
                         <div class="text-block">
                             <h2 class="reveal-up">OUR STORY</h2>
                             <p class="sub-heading">ウリアイ · OUR JOURNEY</p>
-                            <div class="choice-box reveal-up delay-1">
-                                <p class="choice-question">How do you want to remember?</p>
-                                <div class="choice-buttons">
-                                    <button class="btn-choice active" data-path="sweet">THE SWEETNESS</button>
-                                    <button class="btn-choice" data-path="truth">THE TRUTH</button>
+                        <!-- The Journey Timeline -->
+                        <div class="journey-timeline reveal-up">
+                            <div class="timeline-line"></div>
+                            <div class="timeline-node">
+                                <div class="node-dot"></div>
+                                <div class="node-content">
+                                    <h4>First Meeting</h4>
+                                    <p>Wow she's very cutee mann</p>
                                 </div>
                             </div>
-                            <div class="path-content active" id="path-sweet">
-                                <p class="body-text">THE MOMENTS WE SHARED FELT LIKE MAGIC, SIMPLE YET UNFORGETTABLE.</p>
+                            <div class="timeline-node">
+                                <div class="node-dot"></div>
+                                <div class="node-content">
+                                    <h4>Getting Close</h4>
+                                    <p>Ek apna pann lagne lage</p>
+                                </div>
                             </div>
-                            <div class="path-content" id="path-truth">
-                                <p class="body-text">WE WERE IMPERFECT, BUT WE WERE TOGETHER. AND THAT WAS EVERYTHING.</p>
+                            <div class="timeline-node">
+                                <div class="node-dot"></div>
+                                <div class="node-content">
+                                    <h4>Best Moments</h4>
+                                    <p>All these 9 months are my favourite...</p>
+                                </div>
+                            </div>
+                            <div class="timeline-node">
+                                <div class="node-dot"></div>
+                                <div class="node-content">
+                                    <h4>Drift</h4>
+                                    <p>Maine bht galtiya kari...</p>
+                                </div>
+                            </div>
+                        </div>
+
+                            <div class="story-glass-panel">
+                                <p class="story-para">
+                                    <span class="story-reveal-line">Hmm soo okay time to just go back into the time to
+                                        think about the most beautiful time and <span class="glow-word">memory</span> I had....</span><br>
+                                    <span class="story-reveal-line">starting upto how I <span class="glow-word">adore</span> you so from the day 1 of
+                                        the college shyd yeh baat maine kabhi na share kari ho</span><br>
+                                    <span class="story-reveal-line">from the very first day of clg I just seen <span class="glow-word">you</span> and
+                                        thought wow shes very cutee mann</span>
+                                </p>
+
+                                <p class="story-para">
+                                    <span class="story-reveal-line">but thik hai I wont lie us time par mereko kuch
+                                        feelings nhi thi</span><br>
+                                    <span class="story-reveal-line">but jaise jaise time badha tera sath ek apna pann
+                                        lagne lage</span><br>
+                                    <span class="story-reveal-line">ek comfortable level create hogaya jo kisi ke sath
+                                        nhi hua tha</span>
+                                </p>
+
+                                <p class="story-para">
+                                    <span class="story-reveal-line">after that shivansh wala incident I genuinely don't
+                                        know ki mereko itni strong feelings kaise aayi</span><br>
+                                    <span class="story-reveal-line">but thik mereko aagayi and I just fall in love with
+                                        you....</span><br>
+                                    <span class="story-reveal-line">it was really love a pure love which doesn't expect
+                                        anything</span>
+                                </p>
+
+
+
+                                <p class="story-para">
+                                    <span class="story-reveal-line">at that time maine kabhi expect nhi kiya ki tu bhi
+                                        mereko same way mai like kare</span><br>
+                                    <span class="story-reveal-line">I was just okay in adoring you quietly</span>
+                                </p>
+
+                                <p class="story-para">
+                                    <span class="story-reveal-line">I don't know na at that time ki relationship mai
+                                        aakar tereko adore karna will be more fascinating than dur se adore
+                                        karna</span><br>
+                                    <span class="story-reveal-line">it was just awesome all these 9 months are my
+                                        favourite one...</span>
+                                </p>
+
+
+
+                                <p class="story-para">
+                                    <span class="story-reveal-line">haa thik hai I accept maine bht galtiya kari but
+                                        insaan hi toh galtiya karta hai...</span><br>
+                                    <span class="story-reveal-line">galtiyo se hi toh hum seekhte hai life ke
+                                        lessons...</span>
+                                </p>
+
+                                <p class="story-para story-highlight">
+                                    <span class="story-reveal-line">humari stry toh kaafi lambi hai the night can end
+                                        but our stry will not end</span><br>
+                                    <span class="story-reveal-line">and i genuinely wanted ki we should create not only
+                                        a 9 month stry but a stry of 9 years and more...AMEN</span>
+                                </p>
                             </div>
                         </div>
                         <div class="image-showcase">
@@ -172,92 +291,245 @@
                 </div>
             </section>
 
-            <!-- PAUSE MOMENT 2 -->
-            <section class="panel pause-moment">
+            <!-- CINEMATIC SCROLL 3 -->
+            <section class="panel cinematic-scroll-section">
                 <div class="content-wrapper text-center">
-                    <p class="single-line-text reveal-fade">I NEVER REALIZED THAT SILENCE COULD BE SO LOUD.</p>
+                    <p class="cinematic-text cinematic-fade-up">"We didn’t lose each other in one moment…<br>we slowly
+                        drifted apart through silence, misunderstandings, and things we never said when we should have."
+                    </p>
+                </div>
+            </section>
+
+            <!-- PAUSE MOMENT 2 -->
+            <section class="panel cinematic-scroll-section">
+                <div class="content-wrapper text-center">
+                    <p class="cinematic-text cinematic-fade-up">“I never realized that silence could be this loud, that the
+                        absence of one person could fill every corner of the heart with memories, questions, and all the
+                        things we never got the chance to say.”</p>
                 </div>
             </section>
 
             <!-- SECTION 3: REALIZATION (LOCKED) -->
             <section id="what-i-realized" class="panel is-blur-locked">
                 <div class="lock-overlay">
-                    <div class="lock-content">
-                        <p>ARE YOU READY TO SEE THE GROWTH?</p>
-                        <button class="btn-unlock" onclick="unlockSection('what-i-realized')">UNLOCK THE INSIGHT</button>
+                    <div class="lock-content premium-lock">
+                        <div class="lock-icon-wrapper">
+                            <span class="lock-icon">✧</span>
+                        </div>
+                        <h3 class="premium-question">Do you want to know what I finally understood?</h3>
+                        <p class="premium-subtitle">Time brings clarity and perspective.</p>
+                        <button class="btn-unlock" onclick="unlockSection('what-i-realized')">
+                            <span class="btn-text">UNLOCK THE INSIGHT</span>
+                        </button>
                     </div>
                 </div>
+                <div class="content-wrapper">
+                    <div class="split-layout">
+                        <div class="split-image-side reveal-left">
+                            <img src="asset/realized.jpeg" alt="Memory" class="premium-memory-image">
+                        </div>
+                        <div class="split-text-side text-center reveal-right">
+                            <h2 class="reveal-up">WHAT I REALIZED</h2>
+                            <div class="insight-card" id="insightCard">
+                                <div class="story-glass-panel" style="margin-top: 20px; padding: 30px; text-align: left;">
+                                    <p class="story-para">
+                                        <span class="story-reveal-line">Okayy, so here I am going to write about what I realized really...</span><br>
+                                        <span class="story-reveal-line">Dekh, yeh <span class="glow-word">separation</span> period mere liye bhi aur tere liye bhi dono ke liye sabse toughest time tha.</span><br>
+                                        <span class="story-reveal-line">Dono ne bahut saare aise changes face kiye jo shayad kabhi expect bhi nahi kare the...</span>
+                                    </p>
+                                    
+                                    <p class="story-para">
+                                        <span class="story-reveal-line">Maine toh personally kabhi nahi socha tha ki mai kisi <span class="glow-word">therapist</span> ko visit karunga,</span><br>
+                                        <span class="story-reveal-line">But anyways, I realized a lot of things in this period.</span><br>
+                                        <span class="story-reveal-line">And the main thing I realized is—</span><br>
+                                        <span class="story-highlight" style="display:block; margin-top:20px;">"KUCH BHI HO, I JUST WANT YOU IN MY LIFE BACK. NOT AS A FRIEND, BUT AGAIN AS MY GIRLFRIEND."</span>
+                                    </p>
+
+                                    <p class="story-para">
+                                        <span class="story-reveal-line">I know some will say ki bhai tu toh apni self respect nahi rakh raha, yeh woh...</span><br>
+                                        <span class="story-reveal-line">But genuinely, I don't give a damn fuck to all these.</span><br>
+                                        <span class="story-reveal-line">I don't even care about my self respect... I just want <span class="glow-word">you</span>.</span>
+                                    </p>
+
+                                    <p class="story-para" style="margin-bottom:0;">
+                                        <span class="story-reveal-line" style="opacity: 0.7;">Likhte huye bhi rona aa raha hai... but thik hai.</span><br>
+                                        <span class="story-reveal-line" style="opacity: 0.7;">All these things doesn't mean to create any pressure on you.</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CINEMATIC SCROLL 4 -->
+            <section class="panel cinematic-scroll-section">
                 <div class="content-wrapper text-center">
-                    <h2 class="reveal-up">WHAT I REALIZED</h2>
-                    <div class="insight-reveal-trigger" id="insightTrigger">
-                        <p class="trigger-text">PLACE CURSOR HERE TO FEEL</p>
-                    </div>
-                    <div class="insight-card hidden-initially" id="insightCard">
-                        <p class="insight-quote">"TIME APART GAVE ME THE PERSPECTIVE I DESPERATELY NEEDED. I REALIZED WHAT I TOOK FOR GRANTED WAS THE MOST VALUABLE PART OF MY LIFE."</p>
-                    </div>
+                    <p class="cinematic-text cinematic-fade-up">"And maybe that’s what hurts the most…<br>not the fact
+                        that it ended, but the feeling that we could have made it work if we just tried a little
+                        harder."</p>
                 </div>
             </section>
 
             <!-- SECTION 4: REFLECTION -->
             <section id="what-went-wrong" class="panel dark-depth is-blur-locked">
                 <div class="lock-overlay" id="lockReflection">
-                    <div class="lock-content">
-                        <p>ARE YOU READY FOR THE TRUTH?</p>
-                        <button class="btn-unlock" onclick="unlockSection('what-went-wrong')">FACE THE REFLECTION</button>
+                    <div class="lock-content premium-lock">
+                        <div class="lock-icon-wrapper">
+                            <span class="lock-icon">✧</span>
+                        </div>
+                        <h3 class="premium-question">Are you ready for the truth?</h3>
+                        <p class="premium-subtitle">Every story has its shadows.</p>
+                        <button class="btn-unlock" onclick="unlockSection('what-went-wrong')">
+                            <span class="btn-text">FACE THE REFLECTION</span>
+                        </button>
                     </div>
                 </div>
                 <div class="content-wrapper text-left">
-                    <h2 class="split-reveal">WHAT WENT WRONG.</h2>
-                    <div class="reflection-timeline">
-                        <div class="timeline-item reveal-left">
-                            <span class="time-label">THE FEAR</span>
-                            <p>I WAS AFRAID OF LOSING CONTROL.</p>
-                        </div>
-                        <div class="timeline-item reveal-left delay-1">
-                            <span class="time-label">THE SILENCE</span>
-                            <p>I STOPPED TELLING YOU HOW MUCH YOU MATTERED.</p>
-                        </div>
+                    <h2 class="split-reveal" style="text-align: center;">REFLECTION</h2>
+                    <div class="story-glass-panel" style="margin-top: 20px; padding: 30px; text-align: left;">
+                        <p class="story-para">
+                            <span class="story-reveal-line">Hmm so yeah jab main honestly apne aap ko dekhta hoon na toh realize hota hai ki main aur better ho sakta tha...</span><br>
+                            <span class="story-reveal-line">Main <span class="glow-word">feel</span> toh karta tha sab kuch par har baar usse sahi tarah se dikha nahi paaya aur shayad wahi sabse badi kami thi.</span><br>
+                            <span class="story-reveal-line">Kabhi kabhi main <span class="glow-word">chup</span> reh gaya jab mujhe bolna chahiye tha aur kabhi main samajh nahi paaya jab mujhe sirf feel karna chahiye tha.</span>
+                        </p>
+
+                        <p class="story-para">
+                            <span class="story-reveal-line">Shayad main thoda zyada <span class="glow-word">patience</span> rakh sakta tha, thoda zyada effort daal sakta tha, thoda zyada clarity laa sakta tha.</span><br>
+                            <span class="story-reveal-line">Aur haan, main yeh maanta hoon ki har situation mein main perfect react nahi kar paaya... par uss time jo samajh thi main ussi hisaab se chal raha tha.</span>
+                        </p>
+
+                        <p class="story-para">
+                            <span class="story-reveal-line">Aaj lagta hai ki agar main thoda aur ruk jata, thoda aur sun leta, thoda aur clearly baat kar leta toh shayad cheezein itni complicated nahi hoti.</span><br>
+                            <span class="story-reveal-line">Par shayad <span class="glow-word">life</span> isi tarah sikhaati hai... pehle feel karwaati hai phir samjhaati hai.</span>
+                        </p>
+
+                        <p class="story-para">
+                            <span class="story-reveal-line">Aur jo maine seekha hai na woh yeh hai ki kisi ko lose karna hi zaruri nahi hota samajhne ke liye... par kabhi kabhi hum late samajhte hain.</span><br>
+                            <span class="story-reveal-line">Bas ek hi regret rehta hai andar se ki kaash uss time main thoda aur better version hota apna.</span>
+                        </p>
+
+                        <p class="story-para story-highlight" style="margin-bottom:0;">
+                            <span class="story-reveal-line">Par ek cheez aaj bhi clear hai ki jo feel tha woh pure tha, aur shayad isi liye aaj bhi itna deeply yaad aata hai...</span>
+                        </p>
                     </div>
+                </div>
+            </section>
+
+            <!-- CINEMATIC SCROLL 5 -->
+            <section class="panel cinematic-scroll-section">
+                <div class="content-wrapper text-center">
+                    <p class="cinematic-text cinematic-fade-up">"Time didn’t erase what we had…<br>it only made me
+                        realize how rare, how genuine, and how irreplaceable it actually was."</p>
                 </div>
             </section>
 
             <!-- SECTION 5: FEELINGS (LOCKED) -->
             <section id="what-i-feel-now" class="panel ethereal is-blur-locked">
                 <div class="lock-overlay">
-                    <div class="lock-content">
-                        <p>WANT TO KNOW WHAT I FEEL NOW?</p>
-                        <button class="btn-unlock" onclick="unlockSection('what-i-feel-now')">REVEAL MY HEART</button>
+                    <div class="lock-content premium-lock">
+                        <div class="lock-icon-wrapper">
+                            <span class="lock-icon">✧</span>
+                        </div>
+                        <h3 class="premium-question">Want to know what I feel now?</h3>
+                        <p class="premium-subtitle">Some emotions only grow deeper.</p>
+                        <button class="btn-unlock" onclick="unlockSection('what-i-feel-now')">
+                            <span class="btn-text">REVEAL MY HEART</span>
+                        </button>
                     </div>
                 </div>
-                <div class="content-wrapper text-center">
-                    <h2 class="glow-text">WHAT I FEEL NOW</h2>
-                    <div class="emotional-reveal">
-                        <p class="fade-reveal-item">EVERY DAY, MY THOUGHTS FIND THEIR WAY BACK TO YOU.</p>
-                        <p class="fade-reveal-item">THE LOVE HASN'T FADED.</p>
-                        <p class="fade-reveal-item">IT HAS GROWN DEEPER, QUIETER, AND MORE CERTAIN.</p>
+                <div class="content-wrapper">
+                    <div class="split-layout reverse-split">
+                        <div class="split-text-side text-center reveal-left">
+                            <h2 class="glow-text">WHAT I FEEL NOW</h2>
+                            <div class="story-glass-panel" style="margin-top: 20px; padding: 30px; text-align: left;">
+                                <p class="story-para">
+                                    <span class="story-reveal-line">Hmm so yeah ab jab <span class="glow-word">feelings</span> ki baat aati hai na toh sach yeh hai ki main aage badhne ki koshish karta raha par dil wahi atka hua tha.</span><br>
+                                    <span class="story-reveal-line">Maine bahut baar khud ko samjhaya ki shayad sab khatam ho gaya hai... par jitni baar main aage badhne ki sochta hoon utni baar realize hota hai ki jo feel hai woh abhi bhi wahi hai, bas <span class="glow-word">chup</span> sa ho gaya hai.</span><br>
+                                    <span class="story-reveal-line">Main kisi aur ko replace karne ke idea se kabhi comfortable nahi hua kyuki jo connection tha woh normal nahi tha, woh alag tha... aur woh mujhe aaj bhi feel hota hai.</span>
+                                </p>
+
+                                <p class="story-para">
+                                    <span class="story-reveal-line">Aur main yeh bhi samajh gaya hoon ki sirf feel karna enough nahi hota relationship ko chalane ke liye... usme understanding chahiye, communication chahiye aur ek calm space chahiye jahan dono <span class="glow-word">safe</span> feel kare.</span>
+                                </p>
+
+                                <p class="story-para">
+                                    <span class="story-reveal-line">Agar kabhi tu wapas aane ka sochti hai na toh main yeh promise nahi karunga ki kabhi problem nahi hogi... par yeh zaroor keh sakta hoon ki main har situation ko better handle karne ki puri koshish karunga.</span><br>
+                                    <span class="story-reveal-line">Main sununga, samajhne ki koshish karunga aur jo feel hoga usse clearly bolunga taaki woh gap kabhi create hi na ho jo pehle hua tha.</span>
+                                </p>
+
+                                <p class="story-para">
+                                    <span class="story-reveal-line">Aur agar tujhe relationship se dar lag raha hai na toh main bas itna bolna chahta hoon ki is baar sab kuch dheere hoga... bina pressure ke, bina expectations ke, bas ek simple safe space jahan tu comfortable feel kare.</span><br>
+                                    <span class="story-reveal-line">Main prove karne ki koshish karunga ki cheezein healthy bhi ho sakti hain, calm bhi ho sakti hain aur bina unnecessary fights ke bhi chal sakti hain jab dono log honestly try karte hain.</span>
+                                </p>
+
+                                <p class="story-para">
+                                    <span class="story-reveal-line">Main tujhe force nahi kar raha bas itna keh raha hoon ki agar kabhi tere dil mein bhi thoda sa space ho iske liye toh main yahan hoon is baar better samajh ke saath.</span><br>
+                                    <span class="story-reveal-line">Kyuki sach yeh hai ki jo tha woh mere liye aaj bhi important hai aur shayad isi liye main ab bhi yeh sab feel karta hoon.</span>
+                                </p>
+
+                                <p class="story-para story-highlight" style="margin-bottom:0; text-align: center; font-size: 1.3rem;">
+                                    <span class="story-reveal-line"><strong>I LOVE YOU SRISHTI</strong></span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="split-image-side reveal-right">
+                            <img src="asset/feel.jpeg" alt="Our Feeling" id="feel-image" class="premium-memory-image">
+                        </div>
                     </div>
+                </div>
+            </section>
+
+            <!-- CINEMATIC SCROLL 6 -->
+            <section class="panel cinematic-scroll-section">
+                <div class="content-wrapper text-center">
+                    <p class="cinematic-text cinematic-fade-up">"I tried convincing myself that it didn’t matter
+                        anymore…<br>but some memories don’t fade, and some people never really leave your heart."</p>
+                </div>
+            </section>
+
+            <!-- CINEMATIC SCROLL 7 & TYPING EFFECT -->
+            <section class="panel cinematic-scroll-section">
+                <div class="content-wrapper text-center">
+                    <p class="cinematic-text cinematic-fade-up">"Because no matter how far life takes us…<br>there are
+                        always pieces of us that stay unfinished, waiting for closure… or maybe, another chance."</p>
+                    <br><br>
+                    <p class="cinematic-text typing-effect-trigger" style="opacity: 0;">If you're still reading this…
+                        maybe it still means something.</p>
                 </div>
             </section>
 
             <!-- SECTION 6: FINAL CLIMAX (LOCKED) -->
             <section id="final-proposal" class="panel climax-scene is-blur-locked">
                 <div class="lock-overlay">
-                    <div class="lock-content">
-                        <p>THE FINAL QUESTION...</p>
-                        <button class="btn-unlock" onclick="unlockSection('final-proposal')">UNVEIL THE CLIMAX</button>
+                    <div class="lock-content premium-lock">
+                        <div class="lock-icon-wrapper">
+                            <span class="lock-icon">✧</span>
+                        </div>
+                        <h3 class="premium-question">The Final Question...</h3>
+                        <p class="premium-subtitle">The moment of truth is here.</p>
+                        <button class="btn-unlock" onclick="unlockSection('final-proposal')">
+                            <span class="btn-text">UNVEIL THE CLIMAX</span>
+                        </button>
                     </div>
                 </div>
                 <div class="climax-vignette"></div>
                 <div class="content-wrapper text-center">
-                    <div class="climax-box">
-                        <h2 class="proposal-title pulse-reveal">WILL YOU GIVE US ANOTHER CHANCE?</h2>
-                        <div class="climax-actions">
-                            <button class="btn-heartbeat" id="btnYes">
-                                <span class="btn-content">YES, I'D LIKE THAT.</span>
-                                <div class="heartbeat-ring"></div>
-                            </button>
-                            <button class="btn-ghost" id="btnNo">I NEED MORE TIME.</button>
+                    <!-- Optional Ambient Piano Music -->
+                    <audio id="climaxAudio" src="music/piano.mp3" preload="auto"></audio>
+                    
+                    <div class="climax-box minimal-fade-target">
+                        <h2 class="minimal-proposal-title">"Can we try again?"</h2>
+                        <p class="minimal-proposal-subtitle">"Only if you feel the same."</p>
+                        
+                        <div class="minimal-actions">
+                            <button class="btn-minimal-primary" id="btnYes">Yes</button>
+                            <button class="btn-minimal-secondary" id="btnNo">I need time</button>
                         </div>
+                    </div>
+
+                    <p class="hidden-corner-detail minimal-fade-target">"I still wear the watch."</p>
+
                         <div class="climax-response hidden" id="responseMsg">
                             <div class="response-inner">
                                 <h3 class="reveal-zoom">"I'LL BE WAITING. ❤️"</h3>
@@ -277,7 +549,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"></script>
-    
+
     <script src="script.js"></script>
 </body>
+
 </html>

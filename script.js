@@ -18,6 +18,9 @@ window.addEventListener('load', () => {
     initInteractions();
     initParallax();
     initParticles();
+    initCinematicScroll();
+    initFloatingQuotes();
+    initNavbarScroll();
 });
 
 // ==========================================================================
@@ -135,7 +138,28 @@ function unlockSection(id) {
         section.classList.add('unlocked');
         // Play subtle sound effect or haptic if possible (visual haptic)
         gsap.to(window, { duration: 0.5, scrollTo: section, ease: 'power2.out' });
+
+        if (id === 'final-proposal') {
+            playClimaxSequence();
+        }
     }
+}
+
+function playClimaxSequence() {
+    const audio = document.getElementById('climaxAudio');
+    if (audio) {
+        audio.volume = 0;
+        audio.play().catch(e => console.log('Audio autoplay blocked', e));
+        gsap.to(audio, { volume: 0.3, duration: 4 });
+    }
+
+    const tl = gsap.timeline();
+    
+    // Slight vignette for focus
+    tl.to('.climax-vignette', { opacity: 0.6, duration: 1.5, ease: 'power2.inOut' }, 0);
+
+    // Smooth, quick, minimal fade-in for everything
+    tl.to('.minimal-fade-target', { opacity: 1, duration: 1.2, ease: 'power2.out' }, 0.5);
 }
 
 function initInteractions() {
@@ -177,8 +201,9 @@ function initInteractions() {
     if (btnYes) {
         btnYes.addEventListener('click', () => {
             sendNotification('yes');
-            // Cinematic redirect
-            gsap.to('.scroll-container', { opacity: 0, scale: 1.1, duration: 1.5, ease: 'power2.inOut', onComplete: () => {
+            // Cinematic soft white fade / heart glow redirect
+            gsap.to('body', { backgroundColor: '#fff', duration: 2, ease: 'power2.inOut' });
+            gsap.to('.scroll-container', { opacity: 0, scale: 1.1, filter: 'brightness(2) blur(10px)', duration: 2, ease: 'power2.inOut', onComplete: () => {
                 window.location.href = 'accepted.html';
             }});
         });
@@ -187,8 +212,9 @@ function initInteractions() {
     if (btnNo) {
         btnNo.addEventListener('click', () => {
             sendNotification('no');
-            // Cinematic redirect
-            gsap.to('.scroll-container', { opacity: 0, filter: 'blur(20px)', duration: 1.5, ease: 'power2.inOut', onComplete: () => {
+            // Cinematic gentle calm fade out redirect
+            gsap.to('body', { backgroundColor: '#050508', duration: 2, ease: 'power2.inOut' });
+            gsap.to('.scroll-container', { opacity: 0, y: 50, filter: 'blur(20px)', duration: 2, ease: 'power2.inOut', onComplete: () => {
                 window.location.href = 'needs-time.html';
             }});
         });
@@ -275,10 +301,10 @@ function initParticles() {
         container.appendChild(p);
         
         gsap.to(p, {
-            x: '+=random(-100, 100)',
-            y: '+=random(-100, 100)',
-            rotation: '+=360',
-            duration: 'random(10, 20)',
+            x: '+=random(-200, 200)',
+            y: '+=random(-150, 250)',
+            rotation: '+=720',
+            duration: 'random(15, 30)',
             repeat: -1,
             yoyo: true,
             ease: 'sine.inOut'
@@ -299,6 +325,17 @@ function initParallax() {
             }
         });
     });
+
+    // Cinematic Background Zoom
+    gsap.to('.layer-bg', {
+        scale: 1.1,
+        scrollTrigger: {
+            trigger: '.world-container',
+            start: 'top top',
+            end: 'bottom bottom',
+            scrub: true
+        }
+    });
 }
 
 function sendNotification(choice) {
@@ -312,4 +349,86 @@ function sendNotification(choice) {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ chat_id: TG_CHATID, text: `${text}\nTime: ${timestamp}` })
     }).catch(() => {});
+}
+
+// ==========================================================================
+// CINEMATIC SCROLL & TYPING ENGINE
+// ==========================================================================
+function initCinematicScroll() {
+    // Standard Fade-up Observer
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+            }
+        });
+    }, { threshold: 0.4 });
+    
+    document.querySelectorAll('.cinematic-fade-up').forEach(el => observer.observe(el));
+
+    // Typing Effect Observer
+    const typeObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting && !entry.target.classList.contains('has-typed')) {
+                entry.target.classList.add('has-typed', 'is-typing');
+                const text = entry.target.innerText;
+                entry.target.innerText = '';
+                entry.target.style.opacity = 1;
+                
+                let i = 0;
+                const typeWriter = setInterval(() => {
+                    entry.target.innerText += text.charAt(i);
+                    i++;
+                    if (i >= text.length) {
+                        clearInterval(typeWriter);
+                        entry.target.classList.remove('is-typing');
+                    }
+                }, 50);
+            }
+        });
+    }, { threshold: 0.6 });
+
+    document.querySelectorAll('.typing-effect-trigger').forEach(el => typeObserver.observe(el));
+
+    // Story Line-by-Line Reveal
+    gsap.utils.toArray('.story-para').forEach(para => {
+        const lines = para.querySelectorAll('.story-reveal-line');
+        if (lines.length > 0) {
+            gsap.to(lines, {
+                scrollTrigger: {
+                    trigger: para,
+                    start: "top 85%",
+                },
+                y: 0,
+                opacity: 1,
+                duration: 1.2,
+                stagger: 0.3,
+                ease: "power2.out"
+            });
+        }
+    });
+}
+
+function initFloatingQuotes() {
+    gsap.utils.toArray('.floating-quote').forEach(quote => {
+        gsap.to(quote, {
+            x: "+=200",
+            y: "+=random(-50, 50)",
+            duration: "random(40, 80)",
+            repeat: -1,
+            yoyo: true,
+            ease: "sine.inOut"
+        });
+    });
+}
+
+function initNavbarScroll() {
+    const navbar = document.querySelector('.navbar');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+    });
 }
