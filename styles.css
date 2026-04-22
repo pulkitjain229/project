@@ -4,11 +4,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200;400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Inter:wght@100;300;400&family=Outfit:wght@100;300;400&display=swap');
 
 :root {
-    --bg-deep: #050508;
+    --bg-deep: #030305;
     --text-white: #ffffff;
-    --text-dim: rgba(255, 255, 255, 0.4);
-    --accent-sakura: #e8a0b0;
-    --accent-sakura-deep: #c4607a;
+    --text-dim: rgba(255, 255, 255, 0.45);
+    --accent-gold: #c5a059;
+    --accent-gold-bright: #ffd700;
+    --accent-gold-glow: rgba(197, 160, 89, 0.3);
     --ease-cinematic: cubic-bezier(0.19, 1, 0.22, 1);
     
     /* Responsive Spacing */
@@ -66,7 +67,7 @@ body.is-locked {
     background-image: url('hero_background.png');
     background-size: cover;
     background-position: center;
-    filter: brightness(0.35) saturate(1.1);
+    filter: brightness(0.4) contrast(1.1);
 }
 
 .layer-haze {
@@ -135,7 +136,7 @@ body.is-locked {
     display: block;
     font-size: clamp(0.5rem, 2vw, 0.65rem);
     letter-spacing: 0.6em;
-    color: var(--accent-sakura);
+    color: var(--accent-gold-bright);
     margin-bottom: 20px;
     font-weight: 600;
 }
@@ -174,8 +175,8 @@ body.is-locked {
 }
 
 .btn-luxury-enter:hover {
-    border-color: var(--accent-sakura);
-    box-shadow: 0 0 30px rgba(232, 160, 176, 0.2);
+    border-color: var(--accent-gold-bright);
+    box-shadow: 0 0 30px var(--accent-gold-glow);
 }
 
 /* ==========================================================================
@@ -274,7 +275,7 @@ body.is-locked {
     transition: 0.4s;
 }
 
-.mobile-nav-item:hover { opacity: 1; color: var(--accent-sakura); }
+.mobile-nav-item:hover { opacity: 1; color: var(--accent-gold-bright); }
 
 /* ==========================================================================
    Sections & Layout
@@ -365,14 +366,14 @@ body.is-locked {
 }
 
 .card-back {
-    background: #0d0d1a;
+    background: #08080c;
     transform: rotateY(180deg);
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 30px;
     text-align: center;
-    border: 1px solid rgba(232, 160, 176, 0.2);
+    border: 1px solid var(--accent-gold-glow);
 }
 
 /* ==========================================================================
@@ -432,7 +433,7 @@ body.is-locked {
 
 .lock-icon-wrapper {
     font-size: 2rem;
-    color: var(--accent-sakura);
+    color: var(--accent-gold-bright);
     animation: pulseIcon 2s infinite;
 }
 
@@ -454,7 +455,7 @@ body.is-locked {
 }
 
 .btn-unlock:hover {
-    background: var(--accent-sakura);
+    background: var(--accent-gold-bright);
     color: #000;
 }
 
@@ -480,7 +481,7 @@ body.is-locked {
 .cursor-glow {
     width: 100px;
     height: 100px;
-    background: radial-gradient(circle, rgba(232, 160, 176, 0.2) 0%, rgba(232, 160, 176, 0) 70%);
+    background: radial-gradient(circle, var(--accent-gold-glow) 0%, rgba(197, 160, 89, 0) 70%);
     top: -50px;
     left: -50px;
 }
@@ -529,7 +530,7 @@ body.is-locked {
     font-size: clamp(0.9rem, 3vw, 1.2rem);
     font-style: normal;
     letter-spacing: 0.1em;
-    color: var(--accent-sakura);
+    color: var(--accent-gold-bright);
 }
 
 .typing-effect-trigger.is-typing::after {
@@ -546,13 +547,13 @@ body.is-locked {
    Story Glass Panel & Text Animations
    ========================================================================== */
 .story-glass-panel {
-    background: linear-gradient(180deg, rgba(10, 10, 15, 0.4) 0%, rgba(30, 20, 25, 0.6) 100%);
-    backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: linear-gradient(180deg, rgba(10, 10, 15, 0.6) 0%, rgba(20, 20, 25, 0.8) 100%);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(197, 160, 89, 0.15);
     border-radius: 16px;
     padding: 35px 25px;
     margin: 30px 0;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
 }
 
 .story-para {
@@ -573,8 +574,8 @@ body.is-locked {
     font-size: 1.25rem;
     font-family: 'Noto Serif JP', serif;
     font-style: italic;
-    color: var(--accent-sakura);
-    text-shadow: 0 0 20px rgba(232, 160, 176, 0.3);
+    color: var(--accent-gold-bright);
+    text-shadow: 0 0 20px var(--accent-gold-glow);
     font-weight: 400;
 }
 
@@ -624,8 +625,8 @@ body.is-locked {
     width: 12px;
     height: 12px;
     border-radius: 50%;
-    background: var(--accent-sakura);
-    box-shadow: 0 0 10px var(--accent-sakura);
+    background: var(--accent-gold-bright);
+    box-shadow: 0 0 10px var(--accent-gold-glow);
 }
 
 .node-content h4 {
@@ -659,15 +660,15 @@ body.is-locked {
     bottom: -2px;
     width: 100%;
     height: 1px;
-    background: var(--accent-sakura);
+    background: var(--accent-gold-bright);
     transform: scaleX(0);
     transform-origin: right;
     transition: transform 0.4s ease;
 }
 
 .glow-word:hover {
-    color: var(--accent-sakura);
-    text-shadow: 0 0 10px rgba(232, 160, 176, 0.5);
+    color: var(--accent-gold-bright);
+    text-shadow: 0 0 10px var(--accent-gold-glow);
 }
 
 .glow-word:hover::after {

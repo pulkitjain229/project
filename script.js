@@ -259,7 +259,7 @@ function initCursor() {
 
     // Hover logic
     document.querySelectorAll('button, a, .memory-card').forEach(el => {
-        el.addEventListener('mouseenter', () => gsap.to(follower, { scale: 5, backgroundColor: 'rgba(255,255,255,0.2)' }));
+        el.addEventListener('mouseenter', () => gsap.to(follower, { scale: 5, backgroundColor: 'rgba(197, 160, 89, 0.2)' }));
         el.addEventListener('mouseleave', () => gsap.to(follower, { scale: 1, backgroundColor: '#fff' }));
     });
 }
@@ -289,25 +289,37 @@ function initParticles() {
     const container = document.getElementById('particlesContainer');
     if (!container) return;
     
-    for (let i = 0; i < 20; i++) {
+    for (let i = 0; i < 40; i++) {
         const p = document.createElement('div');
-        p.className = 'petal-particle';
+        p.className = 'gold-shimmer-particle';
+        
+        // Dynamic Gold Dust Styling
+        Object.assign(p.style, {
+            position: 'absolute',
+            width: '2px',
+            height: '2px',
+            backgroundColor: '#ffd700',
+            borderRadius: '50%',
+            boxShadow: '0 0 10px #ffd700',
+            pointerEvents: 'none'
+        });
+
         gsap.set(p, {
             x: gsap.utils.random(0, window.innerWidth),
             y: gsap.utils.random(0, window.innerHeight),
-            opacity: gsap.utils.random(0.1, 0.4),
-            scale: gsap.utils.random(0.5, 1.5)
+            opacity: gsap.utils.random(0.2, 0.6),
+            scale: gsap.utils.random(0.5, 2)
         });
         container.appendChild(p);
         
         gsap.to(p, {
-            x: '+=random(-200, 200)',
-            y: '+=random(-150, 250)',
-            rotation: '+=720',
-            duration: 'random(15, 30)',
+            x: '+=random(-300, 300)',
+            y: '+=random(-200, 400)',
+            duration: 'random(10, 20)',
             repeat: -1,
             yoyo: true,
-            ease: 'sine.inOut'
+            ease: 'sine.inOut',
+            delay: 'random(0, 5)'
         });
     }
 }
